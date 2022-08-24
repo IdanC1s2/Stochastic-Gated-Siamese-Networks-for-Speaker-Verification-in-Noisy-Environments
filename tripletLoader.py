@@ -7,55 +7,6 @@ import torchaudio
 from torch.utils.data import Dataset
 
 
-#
-# class LibriSpeechVerificationDataset(Dataset):
-#     fs = 16000
-#
-#     def __init__(self, sample_time, subset, transform, root='data', p=8, k=4):
-#         """
-#         c'tor for LibriSpeech dataset for speaker verification
-#         :param sample_time: audio sample time in seconds
-#         :param subset: "dev-clean", "dev-other", "test-clean", "test-other",
-#                        "train-clean-100", "train-clean-360", "train-other-500"
-#         """
-#         self.librispeech_dataset = datasets.librispeech.LIBRISPEECH(root=root, url=subset, download=True)
-#         self.sample_time = sample_time
-#         self.base_path = f'{root}/LibriSpeech/{subset}'
-#         self.speakers = [item for item in os.listdir(self.base_path) if os.path.isdir(os.path.join(self.base_path, item))]
-#
-#         self.label_to_samples = {}
-#         speakers_vec = np.array(np.array(self.librispeech_dataset)[:, 3], dtype=int)
-#         for speaker in self.speakers:
-#             indices = np.where(speakers_vec == int(speaker))
-#             self.label_to_samples[speaker] = indices
-#
-#         self.transform = transform
-#         self.p = p
-#         self.k = k
-#
-#     def __len__(self):
-#         return len(self.librispeech_dataset)
-#
-#     def __getitem__(self, idx):
-#         """
-#         return sample_time length audio samples from the dataset
-#         """
-#         if self.__sample_length(idx) < self.sample_time * self.fs:  # If our new sample is shorter than what we want
-#             padded_audio = F.pad(self.librispeech_dataset[idx][0],
-#                                  (1, self.sample_time * self.fs - self.__sample_length(idx)),
-#                                  "replicate").float()
-#             if padded_audio.shape[1] == self.sample_time * self.fs + 1:
-#                 padded_audio = padded_audio[:, :-1]
-#             return self.transform(padded_audio.squeeze(0)), self.librispeech_dataset[idx][3]
-#         else:
-#             truncated_audio = self.librispeech_dataset[idx][0][:, :self.sample_time * self.fs].float()
-#             return self.transform(truncated_audio.squeeze(0)), self.librispeech_dataset[idx][3]
-#
-#     def __sample_length(self, idx):
-#         return self.librispeech_dataset[idx][0].shape[1]
-
-
-
 def load_librispeech_item(fileid: str, path: str, ext_audio: str):
     speaker_id, chapter_id, utterance_id = fileid.split("-")
 
