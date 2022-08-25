@@ -1,14 +1,7 @@
 import shutil
 import os
 import numpy as np
-# from tripletLoader import LibriSpeechVerificationDataset, PKSampler
-# from utils import TripletLoss, AddNoise, pairwise_distance_torch, TodB
-# from siameseNet import SiameseNetwork
 import torch
-# from torch import nn
-# from torch import optim
-# from torch.utils.data import DataLoader
-# from torchaudio import transforms
 import matplotlib.pyplot as plt
 from evaluation import calc_VAL_for_FA_lim
 from training import train_epoch, prepare_training
@@ -147,15 +140,10 @@ def train_model(net, dataloader_train, criterion, optimizer_func, optimizer_gate
 
 if __name__ == '__main__':
 
-    noises_folder = '/home/dsi/idancohen/Unsupervised_Learning/Datasets/Noises/'
-    # noises_folder = './noise/'
-    # data_path = './dataset/train/'
-    data_path = '/home/dsi/idancohen/Unsupervised_Learning/Datasets/Speech/Clean/train/'
-    # val_path = './dataset/val/'
-    val_path = '/home/dsi/idancohen/Unsupervised_Learning/Datasets/Speech/Clean/val/'
-    # results_dir = './results/'
-    results_dir = '/home/dsi/idancohen/Unsupervised_Learning/Results_tweak/'
-    results_dir = '/home/dsi/idancohen/Unsupervised_Learning/Results-room-RUN1/'
+    noises_folder = './noise/'
+    data_path = './dataset/train/'
+    val_path = './dataset/val/'
+    results_dir = './results/'
 
     cuda_idx = 2
     device = f"cuda:{cuda_idx}" if torch.cuda.is_available() else "cpu"
