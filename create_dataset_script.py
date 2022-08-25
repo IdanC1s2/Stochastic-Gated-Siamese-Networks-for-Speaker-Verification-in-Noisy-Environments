@@ -102,21 +102,16 @@ def main():
     # TODO - Change Parameters According to Your Need
     # Path to Librispeech train-clean-100-folder
     Librispeech_path = './LibriSpeech/train-clean-100/'
-    # Librispeech_path = '/home/dsi/idancohen/Unsupervised_Learning/Datasets/Librispeech/LibriSpeech/train-clean-100/'
     # Path to noises folder:
     noises_folder = './noise/'
-    # noises_folder = '/home/dsi/idancohen/Unsupervised_Learning/Datasets/Noises/'
     # Destination path for created dataset:
     dataset_dst_path = './dataset/'
-    # dataset_dst_path = '/home/dsi/idancohen/Unsupervised_Learning/Datasets/Speech/Clean/'
     # Noise type:
     noise_type = 'none'  # possible types:  'white', 'room, 'factory', 'car', 'babble', 'none'
     # Audio file length:
     sample_length = 3  # seconds
     # Number of samples for each speaker:
     n_samples = 10
-    # SNR value:
-    snr = 10
 
     # Create training and validation folders:
     for folder in ['train', 'val']:
